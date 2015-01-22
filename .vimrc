@@ -36,8 +36,8 @@ set cursorline
 " Enable line wrapping on whole words
 set wrap
 set lbr
-set textwidth=99
-set colorcolumn=99
+set textwidth=79
+set colorcolumn=79
 
 " Disable help key
 inoremap <F1> <ESC>
@@ -71,12 +71,17 @@ colorscheme desert
 set guifont=Menlo:h14
 
 " Key mappings
+" - Remove trailing whitespace
 :map <F3> :s:[.]\s\+:.\r:g
-:map <F4> :s:\([A-Za-z.]\),\(\w\):\1 \2:g
+" - Merge blocks of text (append excl. mark to join without space)
+:map <F4> :1,g/^/''+m.<bar>-j
 
 " Highlighting and encoding
 set encoding=utf-8
 set showcmd
+
+" Force syntax for certain extensions
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 " Spell checker settings
 set spell spelllang=nl,en
