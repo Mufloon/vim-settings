@@ -11,12 +11,18 @@ set nocompatible
 set modelines=0
 
 " Tab and indentation settings
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set autoindent
 syntax on
+
+" Smaller tabs for certain file types
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType sass setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType js setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Always show status line
 set laststatus=2
@@ -55,20 +61,23 @@ set autochdir
 " Search fixes: use normal regular expressions
 nnoremap / /\v
 vnoremap / /\v
-" Search fixes: center display line after serach
+" Search fixes: center display line after search
 nnoremap n nzz
 nnoremap N Nzz
 
 " Navigation on display lines
-nnoremap j gj
-vnoremap j gj
-nnoremap k gk
-vnoremap k gk
+"nnoremap j gj
+"vnoremap j gj
+"nnoremap k gk
+"vnoremap k gk
 
 " Fonts and colors
-colorscheme torte
 colorscheme desert
+colorscheme solarized
+set background=light
+set guifont=Consolas:h14
 set guifont=Menlo:h14
+set guifont=Source_Code_Pro:h14
 
 " Key mappings
 " - Remove trailing whitespace
@@ -82,6 +91,9 @@ set showcmd
 
 " Force syntax for certain extensions
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+" Markdown highlighting
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 " Spell checker settings
 set spell spelllang=nl,en
